@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="config-1" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="order" value="1"/>
+        <property name="ignoreResourceNotFound" value="true"/>
+        <property name="location" value="classpath:config.properties"/>
+    </bean>
+
+    <bean id="virtGraph" class="virtuoso.jena.driver.VirtGraph">
+        <constructor-arg index="0" value="${rdfstore.url}"/>
+        <constructor-arg index="1"  value="${rdfstore.username}"/>
+        <constructor-arg index="2" value="${rdfstore.password}"/>
+    </bean>
+
+    <bean id="sparqlQueryTemplateParser" class="uk.ac.ebi.ricordo.rdfstore.service.SparqlQueryTemplateParser">
+        <constructor-arg index="0" value="${sparql.resource}"/>
+    </bean>
+
+
+    <bean id="rdfStoreServiceImpl" class="uk.ac.ebi.ricordo.rdfstore.service.RdfStoreServiceImpl">
+        <constructor-arg name="virtGraph" ref="virtGraph"/>
+        <constructor-arg name="queryTemplateParser" ref="sparqlQueryTemplateParser"/>
+    </bean>
+
+
+    <bean id="bioqualifierServiceImpl" class="uk.ac.ebi.ricordo.rdfstore.service.QualifierServiceImpl">
+        <constructor-arg name="qualifierFile" value="${qualifier.file}" type="java.io.File"/>
+        <constructor-arg name="qualifierURL" value="${qualifier.url}"/>
+    </bean>
+</beans>

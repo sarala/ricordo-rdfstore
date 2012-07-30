@@ -1,0 +1,6 @@
+define input:inference "ricordo_rule"
+SELECT  ?p ?a
+FROM <http://ricordo.com>
+FROM <http://ricordosch.com>
+WHERE
+{ <[]> ?p ?a  . ?p <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.ebi.ac.uk/ricordo/ricordo-qualifiers#RICORDOQualifier> }

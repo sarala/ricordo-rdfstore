@@ -1,0 +1,5 @@
+define input:inference "ricordo_rule"
+SELECT  ?s
+FROM <http://ricordo.com>
+FROM <http://ricordosch.com>
+WHERE { ?s <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.ebi.ac.uk/ricordo/model#model>}
