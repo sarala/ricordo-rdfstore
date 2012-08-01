@@ -31,7 +31,7 @@ public class SparqlQueryTemplateParser {
     public SparqlQueryTemplateParser(String queryTemplatePath) {
         this.queryTemplatePath = queryTemplatePath;
     }
-    
+
     public SparqlQuery getSparqlQuery(String query){
         SparqlQuery sparqlQuery = sparqlQueryHashMap.get(query);
         if(sparqlQuery == null){

@@ -16,10 +16,7 @@
 
 package uk.ac.ebi.ricordo.rdfstore.service;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -42,7 +39,8 @@ public class SparqlInsert implements SparqlQuery{
 
     private void passInsertQueryFile(){
         try {
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(insertQueryfile));
+            InputStream inputStream = SparqlInsert.class.getResourceAsStream(insertQueryfile);
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
             String stringLine;
             while((stringLine = bufferedReader.readLine()) != null){
                 if(stringLine.startsWith("INSERT")){

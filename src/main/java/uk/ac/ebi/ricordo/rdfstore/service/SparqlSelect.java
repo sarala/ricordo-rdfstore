@@ -16,10 +16,7 @@
 
 package uk.ac.ebi.ricordo.rdfstore.service;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 /**
@@ -46,7 +43,8 @@ public class SparqlSelect implements SparqlQuery {
 
     private void passQueryFile(){
         try {
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(queryFile));
+            InputStream inputStream = SparqlInsert.class.getResourceAsStream(queryFile);
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
             String stringLine;
             while((stringLine = bufferedReader.readLine()) != null){
                 if(stringLine.startsWith("define")){

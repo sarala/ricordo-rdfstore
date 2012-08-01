@@ -28,7 +28,7 @@
 
 
     <bean id="bioqualifierServiceImpl" class="uk.ac.ebi.ricordo.rdfstore.service.QualifierServiceImpl">
-        <constructor-arg name="qualifierFile" value="${qualifier.file}" type="java.io.File"/>
+        <constructor-arg name="qualifierFile" value="${qualifier.file}" />
         <constructor-arg name="qualifierURL" value="${qualifier.url}"/>
     </bean>
 </beans>

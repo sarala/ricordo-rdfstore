@@ -29,11 +29,11 @@ import java.util.ArrayList;
  */
 public class QualifierServiceImpl implements QualifierService {
 
-    private File qualifierFile;
+    private String qualifierFile;
     private String qualifierURL;
     ArrayList<Qualifier> queryList = new ArrayList<Qualifier>();
 
-    public QualifierServiceImpl(File qualifierFile, String qualifierURL) {
+    public QualifierServiceImpl(String qualifierFile, String qualifierURL) {
         this.qualifierFile = qualifierFile;
         this.qualifierURL = qualifierURL;
     }
@@ -41,7 +41,8 @@ public class QualifierServiceImpl implements QualifierService {
     public ArrayList<Qualifier> getQualifierList() {
         if (queryList.isEmpty()){
             try {
-                BufferedReader reader = new BufferedReader(new FileReader(qualifierFile));
+                InputStream inputStream = QualifierServiceImpl.class.getResourceAsStream(qualifierFile);
+                BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
                 String strLine;
                 while ((strLine = reader.readLine()) != null)   {
                     queryList.add(new Qualifier(qualifierURL,strLine));
