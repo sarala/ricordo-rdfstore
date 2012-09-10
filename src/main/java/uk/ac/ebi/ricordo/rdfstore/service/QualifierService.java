@@ -33,4 +33,10 @@ public interface QualifierService {
      * @return bq list
      */
     public ArrayList<Qualifier> getQualifierList();
+
+    /**
+     * Return miram biological qualifer url
+     * @return bq url
+     */
+    public String getQualifierURL();
 }

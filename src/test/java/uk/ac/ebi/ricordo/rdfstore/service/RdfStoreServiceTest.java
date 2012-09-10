@@ -91,7 +91,7 @@ public class RdfStoreServiceTest {
 
     @Test
     public void testInsert() {
-        String query = "http://www.ebi.ac.uk/ricordo/toolbox/sbmlo#BIOMD0000000001_React5,http://biomodels.net/biology-qualifiers/isVersionOf,http://identifiers.org/obo.go/GO:0004889";
+        String query = "http://www.ebi.ac.uk/ricordo/toolbox/sbmlo#BIOMD0000000081_M,http://biomodels.net/biology-qualifiers/#isVersionOf,http://identifiers.org/obo.fma/FMA:63841";
         rdfStoreService.insert(query,"insertStatement");
 
     }

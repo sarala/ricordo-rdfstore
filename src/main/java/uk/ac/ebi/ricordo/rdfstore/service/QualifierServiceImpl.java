@@ -56,4 +56,7 @@ public class QualifierServiceImpl implements QualifierService {
         return queryList;
     }
 
+    public String getQualifierURL() {
+        return qualifierURL;
+    }
 }
