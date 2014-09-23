@@ -1,6 +1,10 @@
-define input:inference "ricordo_rule"
-SELECT  ?e ?p ?a
-FROM <http://ricordo.com>
-FROM <http://ricordosch.com>
+SELECT DISTINCT ?modelElement ?qualifier ?annotation
+FROM <http://rdf.ebi.ac.uk/dataset/biomodels/28>
 WHERE
-{ ?e  <http://www.ebi.ac.uk/ricordo/model#elementOf> <[]> . ?e ?p ?a . ?p <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.ebi.ac.uk/ricordo/ricordo-qualifiers#RICORDOQualifier> }
+{
+<[]> ?hasElement ?modelElement .
+?hasElement <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://identifiers.org/biomodels.vocabulary#sbmlElement> .
+?modelElement ?qualifier ?annotation .
+?qualifier <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://identifiers.org/biomodels.vocabulary#sbmlAnnotation> .
+?modelElement <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?elementType
+}

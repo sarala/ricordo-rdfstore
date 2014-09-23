@@ -27,48 +27,48 @@ public class RdfStoreServiceTest {
     public void testResources() throws Exception {
         ResourceList resourceList = new ResourceList();
         rdfStoreService.search("","getResources",resourceList);
-        assertEquals(421,resourceList.getCount());  //number of sbml models
+        assertEquals(3852,resourceList.getCount());  //number of sbml models
     }
 
     @Test
     public void testQueryGetResourcesByType() {
         ResourceList resourceList = new ResourceList();
-        rdfStoreService.search("http://www.ebi.ac.uk/ricordo/toolbox/sbmlo#SBMLModel","getResourcesByType",resourceList);
-        assertEquals(421,resourceList.getCount());  //number of sbml models
+        rdfStoreService.search("http://identifiers.org/biomodels.vocabulary#SBMLModel","getResourcesByType",resourceList);
+        assertEquals(3852,resourceList.getCount());  //number of sbml models
     }
 
 
     @Test
     public void testQueryGetResourceForAnnotationOfElement() {
         ResourceList resourceList = new ResourceList();
-        rdfStoreService.search("http://identifiers.org/obo.go/GO:0031594","getResourceForAnnotationOfElement",resourceList);
-        assertEquals("http://www.ebi.ac.uk/ricordo/toolbox/sbmlo#BIOMD0000000001", resourceList.getResources().get(0).getValue().get(0));
-        assertEquals("http://www.ebi.ac.uk/ricordo/toolbox/sbmlo#BIOMD0000000002",  resourceList.getResources().get(1).getValue().get(0));
+        rdfStoreService.search("http://identifiers.org/go/GO:0031594","getResourceForAnnotationOfElement",resourceList);
+        assertEquals("http://identifiers.org/biomodels.db/BIOMD0000000001", resourceList.getResources().get(0).getValue().get(0));
+        assertEquals("http://identifiers.org/biomodels.db/BIOMD0000000002",  resourceList.getResources().get(1).getValue().get(0));
     }
 
     @Test
     public void testQueryGetResourceForAnnotation() {
         ResourceList resourceList = new ResourceList();
-        rdfStoreService.search("http://identifiers.org/obo.go/GO:0031594","getResourceForAnnotation",resourceList);
-        assertEquals("http://www.ebi.ac.uk/ricordo/toolbox/sbmlo#BIOMD0000000001_comp1", resourceList.getResources().get(0).getValue().get(0));
-        assertEquals("http://www.ebi.ac.uk/ricordo/toolbox/sbmlo#BIOMD0000000002_comp1",  resourceList.getResources().get(1).getValue().get(0));
+        rdfStoreService.search("http://identifiers.org/go/GO:0031594","getResourceForAnnotation",resourceList);
+        assertEquals("http://identifiers.org/biomodels.db/BIOMD0000000001#_000002", resourceList.getResources().get(0).getValue().get(0));
+        assertEquals("http://identifiers.org/biomodels.db/BIOMD0000000002#_986127",  resourceList.getResources().get(1).getValue().get(0));
     }
 
     @Test
     public void testQueryGetElementOfResource() {
         ResourceList resourceList = new ResourceList();
-        rdfStoreService.search("http://www.ebi.ac.uk/ricordo/toolbox/sbmlo#BIOMD0000000001","getElementOfResource",resourceList);
-        assertEquals(65,resourceList.getCount());
+        rdfStoreService.search("http://identifiers.org/biomodels.db/BIOMD0000000001","getElementOfResource",resourceList);
+        assertEquals(66,resourceList.getCount());
     }
 
     @Test
     public void testQueryAnnotationOfResource() {
         ResourceList resourceList = new ResourceList();
-        rdfStoreService.search("http://www.ebi.ac.uk/ricordo/toolbox/sbmlo#BIOMD0000000001","getAnnotationOfResource",resourceList);
+        rdfStoreService.search("http://identifiers.org/biomodels.db/BIOMD0000000001","getAnnotationOfResource",resourceList);
         assertEquals("http://biomodels.net/biology-qualifiers#isVersionOf", resourceList.getResources().get(0).getValue().get(0));
-        assertEquals("http://identifiers.org/obo.go/GO:0007166", resourceList.getResources().get(0).getValue().get(1));
+        assertEquals("http://identifiers.org/go/GO:0007274", resourceList.getResources().get(0).getValue().get(1));
         assertEquals("http://biomodels.net/biology-qualifiers#isVersionOf",  resourceList.getResources().get(1).getValue().get(0));
-        assertEquals("http://identifiers.org/obo.go/GO:0007274",  resourceList.getResources().get(1).getValue().get(1));
+        assertEquals("http://identifiers.org/go/GO:0007166",  resourceList.getResources().get(1).getValue().get(1));
 
 
     }
@@ -76,24 +76,22 @@ public class RdfStoreServiceTest {
     @Test
     public void testQueryAnnotationOfElementOfResource() {
         ResourceList resourceList = new ResourceList();
-        rdfStoreService.search("http://www.ebi.ac.uk/ricordo/toolbox/sbmlo#BIOMD0000000001","getAnnotationOfElementOfResource",resourceList);
-        assertEquals(39,resourceList.getCount());
+        rdfStoreService.search("http://identifiers.org/biomodels.db/BIOMD0000000001","getAnnotationOfElementOfResource",resourceList);
+        assertEquals(104,resourceList.getCount());
      }
 
     @Test
     public void testQueryGetTypesOfResource() {
         ResourceList resourceList = new ResourceList();
         rdfStoreService.search("","getTypesOfResource",resourceList);
-        assertEquals("http://www.ebi.ac.uk/ricordo/toolbox/sbmlo#SBMLModel", resourceList.getResources().get(0).getValue().get(0));
-        assertEquals("http://www.ebi.ac.uk/ricordo/toolbox/cellmlo#CellMLModel",resourceList.getResources().get(1).getValue().get(0));
-
+        assertEquals("http://identifiers.org/biomodels.vocabulary#SBMLModel", resourceList.getResources().get(0).getValue().get(0));
     }
 
-    @Test
+/*    @Test
     public void testInsert() {
         String query = "http://www.ebi.ac.uk/ricordo/toolbox/sbmlo#BIOMD0000000081_M,http://biomodels.net/biology-qualifiers/#isVersionOf,http://identifiers.org/obo.fma/FMA:63841";
         rdfStoreService.insert(query,"insertStatement");
 
-    }
+    }*/
 
 }

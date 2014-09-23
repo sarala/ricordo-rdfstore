@@ -1,5 +1,7 @@
-define input:inference "ricordo_rule"
 SELECT ?e
-FROM <http://ricordo.com>
+FROM <http://rdf.ebi.ac.uk/dataset/biomodels/28>
 WHERE
-{ ?e <http://www.ebi.ac.uk/ricordo/model#elementOf> <[]> }
+{
+<[]> ?qualifier ?modelElement .
+?qualifier <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://identifiers.org/biomodels.vocabulary#sbmlElement> .
+}

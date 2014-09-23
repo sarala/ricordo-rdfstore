@@ -1,4 +1,3 @@
-define input:inference "ricordo_rule"
 SELECT  ?s
-FROM <http://ricordo.com>
+FROM <http://rdf.ebi.ac.uk/dataset/biomodels/28>
 WHERE { ?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <[]>}
